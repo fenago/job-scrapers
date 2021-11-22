@@ -8,4 +8,4 @@ scrapy crawl trial -a job=any_job_type -a location=any_location_string -o filena
 
 example command to run this scrapper 
 
-scrapy crawl trial -a job=Software%20Engineer -a location=miami -o indeed_jobs_data.csv
+scrapy crawl trial -a location=miami -o indeed_jobs_data.csv
