@@ -1,3 +1,5 @@
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/fenago/job-scrapers/HEAD)
+<br />
 You can install this project through following command: 
 
 pip install -r requirements.txt
