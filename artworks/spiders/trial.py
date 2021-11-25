@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 import scrapy
 from artworks.items import ArtworksItem
+import datetime
+import re
 
 
 # Any additional imports (items, libraries,..)
@@ -38,12 +40,7 @@ class TrialSpider(scrapy.Spider):
         company = response.xpath(
             '//div[contains(@class, "jobsearch-InlineCompanyRating icl-u-xs-mt--xs jobsearch-DesktopStickyContainer-companyrating")]//a/text()').extract_first()
         location = response.xpath(
-            '//div[contains(@class, "jobsearch-InlineCompanyRating icl-u-xs-mt--xs jobsearch-DesktopStickyContainer-companyrating")]//following-sibling::div[1]/text()').extract()
-        if location:
-            try:
-                location = location[1]
-            except:
-                location = location[0]
+            '//div[@class = "icl-u-xs-mt--xs icl-u-textColor--secondary jobsearch-JobInfoHeader-subtitle jobsearch-DesktopStickyContainer-subtitle"]//div[not(@class)]/text()').extract_first()
         try:
             salary = response.xpath(
                 '//div[contains(text(), "Salary")]//following-sibling::span[1]/text()').extract_first()
@@ -58,13 +55,19 @@ class TrialSpider(scrapy.Spider):
         except:
             job_type = response.xpath(
                 '//div[contains(@class, "jobsearch-JobMetadataHeader-item ")]/span/text()').extract_first()
-        art_work_item = {
-            'company': company,
-            'location': location,
-            'position': position,
-            'description': description,
-            'job_type': job_type,
-            'salary': salary,
-            'id': response.meta['job_id']
-        }
-        yield ArtworksItem(art_work_item)
+        posted_date = response.xpath('//div[contains(text(), "days ago")]/text()').extract_first()
+        if posted_date:            
+            posted_date = re.search('[0-9]+', str(posted_date)).group()
+            posted_date = (datetime.datetime.now() - datetime.timedelta(days=int(posted_date))).strftime('%Y-%m-%d')
+        if company:
+            art_work_item = {
+                'company': company,
+                'description': description,
+                'id': response.meta['job_id'],
+                'job_type': job_type,
+                'location': location,
+                'posted_date':posted_date,
+                'salary': salary,
+                'position': position,
+            }
+            yield ArtworksItem(art_work_item)

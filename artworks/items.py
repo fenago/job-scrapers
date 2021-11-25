@@ -16,4 +16,5 @@ class ArtworksItem(scrapy.Item):
     job_type = scrapy.Field()
     salary = scrapy.Field()
     id = scrapy.Field()
+    posted_date = scrapy.Field()
 
