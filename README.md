@@ -12,13 +12,19 @@ example command to run scrappers
 
 Just replace your spaces in string with %20 and add -a before location like below command:
 
+
 For Indeed:
+
 scrapy crawl trial -a job="data%20analyst" -a location="fort%20lauderdale" -o indeed_jobs_data.csv
 
+
 For Dice:
+
 scrapy crawl dice_scrapper -a job="data%20analyst" -a location="fort%20lauderdale" -o indeed_jobs_data.csv
 
+
 For Monster:
+
 scrapy crawl monster_scrapper -a job="data%20analyst" -a location="fort%20lauderdale" -o indeed_jobs_data.csv
 
 
