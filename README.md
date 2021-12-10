@@ -10,7 +10,6 @@ scrapy crawl trial -a job=any_job_type -a location=any_location_string -o filena
 
 example command to run this scrapper 
 
-scrapy crawl trial -a location=miami -o indeed_jobs_data.csv
 
 Just replace your spaces in string with %20 and add -a before location like below command:
 
