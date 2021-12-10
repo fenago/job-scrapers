@@ -69,5 +69,6 @@ class TrialSpider(scrapy.Spider):
                 'posted_date':posted_date,
                 'salary': salary,
                 'position': position,
+                'skills': None
             }
             yield ArtworksItem(art_work_item)
