@@ -20,12 +20,12 @@ scrapy crawl trial -a job="data%20analyst" -a location="fort%20lauderdale" -o in
 
 For Dice:
 
-scrapy crawl dice_scrapper -a job="data%20analyst" -a location="fort%20lauderdale" -o indeed_jobs_data.csv
+scrapy crawl dice_jobs -a job="software%20engineer" -a location="London" -o dice_jobs_data.csv
 
 
 For Monster:
 
-scrapy crawl monster_scrapper -a job="data%20analyst" -a location="fort%20lauderdale" -o indeed_jobs_data.csv
+scrapy crawl monster_jobs -a job="software%20engineer" -a location="London" -o monster_jobs_data.csv
 
 
 
