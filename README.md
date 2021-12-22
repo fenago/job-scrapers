@@ -20,7 +20,12 @@ scrapy crawl trial -a job="data%20analyst" -a location="fort%20lauderdale" -o in
 
 For Dice:
 
-scrapy crawl dice_jobs -a job="software%20engineer" -a location="London" -o dice_jobs_data.csv
+1. Download your system specific file from here: https://chromedriver.storage.googleapis.com/index.html?path=96.0.4664.45/
+2. Put the 'chromedriver' file in the root folder and replace the existing chromedriver file if any available there
+3. Run the following command for scraping the Dice website:
+
+    scrapy crawl dice_jobs -a job="software%20engineer" -a location="London" -o dice_jobs_data.csv
+
 
 
 For Monster:
