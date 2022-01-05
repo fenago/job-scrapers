@@ -10,9 +10,11 @@ import re
 
 class TrialSpider(scrapy.Spider):
     name = 'monster_jobs'
+    filename=None
 
-    def __init__(self, job=None, location=None, *args, **kwargs):
+    def __init__(self, job=None, location=None,filename=None, *args, **kwargs):
         super(TrialSpider, self).__init__(*args, **kwargs)
+        self.filename = filename
         self.start_urls = [f'https://www.monster.com/jobs/search?q={job}&where={location}']
 
     base_url = 'https://www.monster.com'

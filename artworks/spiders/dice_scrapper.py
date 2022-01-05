@@ -16,6 +16,7 @@ from selenium.webdriver.chrome.options import Options
 class TrialSpider(scrapy.Spider):
     name = 'dice_jobs'
     option = None
+    filename=None
 
     @staticmethod
     def clean_rawdata(rawData):
@@ -24,9 +25,10 @@ class TrialSpider(scrapy.Spider):
             return rawData
 
 
-    def __init__(self, job=None, location=None , *args, **kwargs):
+    def __init__(self, job=None, location=None, filename=None , *args, **kwargs):
         self.pages = 30
         super(TrialSpider, self).__init__(*args, **kwargs)
+        self.filename = filename
         self.start_urls = [f'https://www.dice.com/jobs?q={job}&location={location}']
 
         self.option = Options()
